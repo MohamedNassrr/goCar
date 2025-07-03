@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_car/client/features/onboarding/presentation/views/onboarding_view.dart';
+import 'package:go_car/client/core/utils/client_app_router.dart';
+import 'package:go_car/core/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,9 +11,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: ClientAppRouter.router,
      debugShowCheckedModeBanner: false,
-      home: OnboardingView(),
+      themeMode: ThemeMode.light,
+      darkTheme: AppTheme.darkMode,
+      theme: AppTheme.lightMode,
+
     );
   }
 }
