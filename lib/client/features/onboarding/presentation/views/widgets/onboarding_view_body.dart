@@ -8,6 +8,7 @@ class OnboardingViewBody extends StatelessWidget {
     return Column(
       children: [
 
+        
       ],
     );
   }
