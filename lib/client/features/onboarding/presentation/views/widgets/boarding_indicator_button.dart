@@ -29,6 +29,7 @@ class BoardingIndicatorButton extends StatelessWidget {
             count: boardingModel.length,
             effect: const ExpandingDotsEffect(
               activeDotColor: primaryColor,
+              dotColor: Color(0x4128c76f),
               dotWidth: 10,
               dotHeight: 10,
               spacing: 5.5,
@@ -37,9 +38,9 @@ class BoardingIndicatorButton extends StatelessWidget {
           Container(
             width: 60,
             height: 60,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.grey[300],
+              color: Color(0x6428c76f),
             ),
             alignment: Alignment.center,
             child: Container(
@@ -47,7 +48,7 @@ class BoardingIndicatorButton extends StatelessWidget {
               height: 49,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.black,
+                color: primaryColor,
               ),
               alignment: Alignment.center,
               child: IconButton(

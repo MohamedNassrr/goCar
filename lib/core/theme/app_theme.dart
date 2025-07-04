@@ -6,6 +6,9 @@ class AppTheme {
     textTheme: CustomTextTheme.lightTextTheme,
   );
   static ThemeData darkMode = ThemeData(
-   textTheme:  CustomTextTheme.darkTextTheme,
+    brightness: Brightness.dark,
+    primaryColor: const Color(0xff28C76F),
+    scaffoldBackgroundColor: const Color(0xff0D0D0D),
+    textTheme:  CustomTextTheme.darkTextTheme,
   );
 }
