@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
+import 'package:go_car/core/constance.dart';
 import 'package:go_router/go_router.dart';
 
 class SkipButton extends StatelessWidget {
@@ -20,7 +21,7 @@ class SkipButton extends StatelessWidget {
         },
         child: Text(
           'skip',
-          style: Theme.of(context).textTheme.displayMedium,
+          style: Theme.of(context).textTheme.displayMedium!.copyWith(color: primaryColor),
         ),
       ),
     );
