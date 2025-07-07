@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "874797873983",
+    "project_id": "go-car-bc518",
+    "storage_bucket": "go-car-bc518.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874797873983:android:1bf4c918fb0c194c5fb18a",
+        "android_client_info": {
+          "package_name": "com.example.go_car"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYMwClYRZNLKwB8dYk4vP46J0bXpyv_2Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

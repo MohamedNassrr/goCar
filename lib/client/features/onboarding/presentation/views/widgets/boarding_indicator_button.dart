@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/features/onboarding/presentation/boarding_model.dart';
 import 'package:go_car/core/constance.dart';
@@ -35,17 +36,9 @@ class BoardingIndicatorButton extends StatelessWidget {
               spacing: 5.5,
             ),
           ),
-          Container(
-            width: 60,
-            height: 60,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Color(0x6428c76f),
-            ),
-            alignment: Alignment.center,
-            child: Container(
-              width: 49,
-              height: 49,
+           Container(
+              width: 55.w,
+              height: 55.h,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: primaryColor,
@@ -64,11 +57,10 @@ class BoardingIndicatorButton extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios_outlined,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
             ),
-          ),
         ],
       ),
     );
