@@ -4,6 +4,7 @@ import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
 import 'package:go_car/core/widgets/custom_divider.dart';
+import 'package:go_car/core/widgets/custom_form_field.dart';
 import 'package:go_car/core/widgets/custom_text_button.dart';
 import 'package:go_car/client/features/auth/presentation/views/widgets/icon_text_buttons.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +20,10 @@ class LoginViewBody extends StatelessWidget {
     return BlocConsumer<PhoneLoginCubit, PhoneLoginStates>(
       listener: (context, state) {
         if (state is PhoneCodeSubmittedStates) {
-          GoRouter.of(context).push(ClientAppRouter.rOtpScreen,extra: context.read<PhoneLoginCubit>());
+          GoRouter.of(context).push(
+            ClientAppRouter.rOtpScreen,
+            extra: context.read<PhoneLoginCubit>(),
+          );
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(
@@ -43,35 +47,21 @@ class LoginViewBody extends StatelessWidget {
                   'Enter Your Phone number',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                TextFormField(
+                CustomFormField(
                   controller: phoneController,
-                  keyboardType: TextInputType.phone,
-                  validator: (value) {
+                  inputType: TextInputType.phone,
+                  validate: (value) {
                     if (value!.isEmpty) {
-                      return 'Phone should not be empty!';
+                      return 'phone should not be empty!';
                     }
                     return null;
                   },
-                  onFieldSubmitted: (value) {
+                  onSubmit: (_) {
                     if (formKey.currentState!.validate()) {
                       phoneCubit.phoneAuth(phoneNumber: phoneController.text);
                     }
                   },
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.green),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      borderSide: const BorderSide(color: Colors.white),
-                    ),
-                    prefixIcon: Icon(
-                      Icons.phone_outlined,
-                      color: Colors.grey[600],
-                    ),
-                    hintText: '01XX XXX XXXX',
-                  ),
+                  hintText: '01XX XXX XXXX',
                 ),
                 CustomTextButton(
                   onPressed: () {
@@ -80,7 +70,7 @@ class LoginViewBody extends StatelessWidget {
                     }
                   },
                   buttonText: 'continue',
-                  textColor: Colors.black,
+                  textColor: Colors.white,
                   isLoading: state is PhoneLoadingStates ? true : false,
                 ),
                 const SizedBox(height: 5),

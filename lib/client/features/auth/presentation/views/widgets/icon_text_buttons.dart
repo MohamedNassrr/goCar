@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_car/core/widgets/custom_icon_text_button.dart';
+import 'package:go_car/client/core/utils/client_app_router.dart';
+import 'package:go_car/core/widgets/custom_text_icon_button.dart';
+import 'package:go_router/go_router.dart';
 
 class IconTextButtons extends StatelessWidget {
   const IconTextButtons({super.key});
@@ -10,19 +12,18 @@ class IconTextButtons extends StatelessWidget {
     return Column(
       spacing: 10,
       children: [
-        CustomIconTextButton(
+        CustomTextIconButton(
           onPressed: (){},
-          buttonText: 'Continue with Google',
-          textColor: Colors.black,
-          iconButton: FontAwesomeIcons.google,
-          iconColor: Colors.black,
+          text: 'Continue with Google',
+          icon: FontAwesomeIcons.google,
         ),
-        CustomIconTextButton(
-          onPressed: (){},
-          buttonText: 'Continue with email',
-          textColor: Colors.black,
-          iconButton: FontAwesomeIcons.envelope,
-          iconColor: Colors.black,
+        CustomTextIconButton(
+          onPressed: (){
+            GoRouter.of(context).push(ClientAppRouter.rEmailScreen);
+          },
+          text: 'Continue with email',
+          icon: FontAwesomeIcons.envelope,
+
         ),
       ],
     );

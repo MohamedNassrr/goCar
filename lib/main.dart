@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart' show Bloc;
+import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: ClientAppRouter.router,
           debugShowCheckedModeBanner: false,
-          themeMode: ThemeMode.dark,
+          themeMode: ThemeMode.light,
           darkTheme: AppTheme.darkMode,
           theme: AppTheme.lightMode,
         );

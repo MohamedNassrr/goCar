@@ -38,7 +38,7 @@ class CustomTextButton extends StatelessWidget {
                   height:30,
                   width: 30,
                   child: Center(
-                    child: CircularProgressIndicator(color: Colors.black),
+                    child: CircularProgressIndicator(color: Colors.white),
                   ),
                 ) : Text(
           buttonText.toUpperCase(),

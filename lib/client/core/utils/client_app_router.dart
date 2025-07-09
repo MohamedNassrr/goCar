@@ -1,7 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
+import 'package:go_car/client/features/auth/presentation/views/email_view.dart';
 import 'package:go_car/client/features/auth/presentation/views/login_view.dart';
 import 'package:go_car/client/features/auth/presentation/views/otp_view.dart';
+import 'package:go_car/client/features/auth/presentation/views/widgets/home.dart';
 import 'package:go_car/client/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -9,6 +11,8 @@ abstract class ClientAppRouter {
   static const rOnboarding = '/';
   static const rLogin = '/LoginView';
   static const rOtpScreen = '/OtpView';
+  static const rEmailScreen = '/EmailView';
+  static const rHome = '/Home';
 
   static final router = GoRouter(
     routes: [
@@ -29,6 +33,14 @@ abstract class ClientAppRouter {
               value: state.extra as PhoneLoginCubit,
               child: const OtpView(),
             ),
+      ),
+       GoRoute(
+        path: rEmailScreen,
+        builder: (context, state) => const EmailView(),
+      ),
+      GoRoute(
+        path: rHome,
+        builder: (context, state) => const Home(),
       ),
     ],
   );
