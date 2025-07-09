@@ -30,7 +30,7 @@ class BoardingIndicatorButton extends StatelessWidget {
             count: boardingModel.length,
             effect: const ExpandingDotsEffect(
               activeDotColor: primaryColor,
-              dotColor: Color(0x4128c76f),
+              dotColor: Colors.grey,
               dotWidth: 10,
               dotHeight: 10,
               spacing: 5.5,
@@ -57,7 +57,7 @@ class BoardingIndicatorButton extends StatelessWidget {
                 },
                 icon: const Icon(
                   Icons.arrow_forward_ios_outlined,
-                  color: Colors.black,
+                  color: Colors.white,
                 ),
               ),
             ),

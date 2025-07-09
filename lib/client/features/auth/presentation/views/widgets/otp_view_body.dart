@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
-import 'package:go_car/client/features/auth/presentation/views/widgets/home.dart';
 import 'package:go_car/client/features/auth/presentation/views/widgets/otp_row_icons.dart';
+import 'package:go_car/core/constance.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpViewBody extends StatelessWidget {
@@ -13,15 +15,11 @@ class OtpViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late String otpCode;
-    
+
     return BlocConsumer<PhoneLoginCubit, PhoneLoginStates>(
       listener: (context, state) {
         if (state is PhoneSuccessStates) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => Home()),
-          );
+         GoRouter.of(context).pushReplacement(ClientAppRouter.rHome);
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(
@@ -45,7 +43,9 @@ class OtpViewBody extends StatelessWidget {
               PinCodeTextField(
                 appContext: context,
                 length: 6,
+                autoFocus: true,
                 animationType: AnimationType.scale,
+                controller: otpController,
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(5),
@@ -53,19 +53,20 @@ class OtpViewBody extends StatelessWidget {
                   fieldWidth: 40,
                   inactiveColor: Colors.grey[400],
                   selectedColor: Colors.grey[400],
+                  activeColor: primaryColor,
                   errorBorderColor: Colors.red,
                 ),
-                cursorColor: Colors.white,
+                cursorColor: Colors.black45,
                 validator: (value) {
                   if (value!.isEmpty) {}
                   return null;
                 },
                 onCompleted: (code) {
-                  otpCode = code;
+                  otpController.text = code;
                 },
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 35),
-              OtpRowIcons(otpCubit: otpCubit, otpCode: otpCode),
+              OtpRowIcons(otpCubit: otpCubit, otpCode: otpController, otpCubitState: state,),
             ],
           ),
         );

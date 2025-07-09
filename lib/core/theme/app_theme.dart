@@ -4,6 +4,7 @@ import 'package:go_car/core/theme/custom_theme/custom_text_theme.dart';
 class AppTheme {
   static ThemeData lightMode = ThemeData(
     textTheme: CustomTextTheme.lightTextTheme,
+    brightness: Brightness.light,
   );
   static ThemeData darkMode = ThemeData(
     brightness: Brightness.dark,
