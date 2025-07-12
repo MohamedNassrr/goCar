@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
 import 'package:go_car/client/features/auth/presentation/views/login_view.dart';
 import 'package:go_car/client/features/auth/presentation/views/otp_view.dart';
-import 'package:go_car/client/features/auth/presentation/views/widgets/home.dart';
 import 'package:go_car/client/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:go_router/go_router.dart';
 
@@ -36,7 +35,6 @@ abstract class ClientAppRouter {
             ),
       ),
 
-      GoRoute(path: rHome, builder: (context, state) => const Home()),
     ],
   );
 }
