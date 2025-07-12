@@ -7,11 +7,14 @@ import 'package:go_car/bloc_observer.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/core/theme/app_theme.dart';
 
+import 'client/core/services/service_locator.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
   await dotenv.load(fileName: ".env");
+  serviceLocator();
   runApp(const MyApp());
 }
 

@@ -46,8 +46,8 @@ class CustomTextIconButton extends StatelessWidget {
     ];
 
     return Container(
-      height: height,
-      width: width,
+      height: height.h,
+      width: width.w,
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: BorderRadius.circular(boarderRadius),
