@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_car/client/core/services/local_storage.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/features/onboarding/presentation/boarding_model.dart';
 import 'package:go_car/core/constance.dart';
@@ -45,8 +46,9 @@ class BoardingIndicatorButton extends StatelessWidget {
               ),
               alignment: Alignment.center,
               child: IconButton(
-                onPressed: () {
-                  if (isLast) {
+                onPressed: () async{
+                  if (isLast)  {
+                    await LocalStorage.setData(key: 'onboarding', value: true);
                     GoRouter.of(context).pushReplacement(ClientAppRouter.rLogin);
                   } else {
                     boardingController.nextPage(

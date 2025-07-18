@@ -19,7 +19,7 @@ class OtpViewBody extends StatelessWidget {
     return BlocConsumer<PhoneLoginCubit, PhoneLoginStates>(
       listener: (context, state) {
         if (state is PhoneSuccessStates) {
-         GoRouter.of(context).pushReplacement(ClientAppRouter.rHome);
+         GoRouter.of(context).pushReplacement(ClientAppRouter.rHomeScreen);
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(
