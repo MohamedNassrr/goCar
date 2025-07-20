@@ -37,32 +37,32 @@ class BoardingIndicatorButton extends StatelessWidget {
               spacing: 5.5,
             ),
           ),
-           Container(
-              width: 55.w,
-              height: 55.h,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: primaryColor,
-              ),
-              alignment: Alignment.center,
-              child: IconButton(
-                onPressed: () async{
-                  if (isLast)  {
-                    await LocalStorage.setData(key: 'onboarding', value: true);
-                    GoRouter.of(context).pushReplacement(ClientAppRouter.rLogin);
-                  } else {
-                    boardingController.nextPage(
-                      duration: const Duration(milliseconds: 800),
-                      curve: Curves.easeInOut,
-                    );
-                  }
-                },
-                icon: const Icon(
-                  Icons.arrow_forward_ios_outlined,
-                  color: Colors.white,
-                ),
+          Container(
+            width: 55.w,
+            height: 55.h,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: primaryColor,
+            ),
+            alignment: Alignment.center,
+            child: IconButton(
+              onPressed: () async {
+                if (isLast) {
+                  await LocalStorage.setData(key: 'onboarding', value: true);
+                  GoRouter.of(context).pushReplacement(ClientAppRouter.rLogin);
+                } else {
+                  boardingController.nextPage(
+                    duration: const Duration(milliseconds: 800),
+                    curve: Curves.easeInOut,
+                  );
+                }
+              },
+              icon: const Icon(
+                Icons.arrow_forward_ios_outlined,
+                color: Colors.white,
               ),
             ),
+          ),
         ],
       ),
     );

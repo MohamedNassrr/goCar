@@ -27,7 +27,9 @@ class IconTextButtons extends StatelessWidget {
           child: BlocConsumer<GoogleAuthCubit, GoogleAuthStates>(
             listener: (BuildContext context, state) {
               if (state is GoogleSuccessStates) {
-                GoRouter.of(context).pushReplacement(ClientAppRouter.rHomeScreen);
+                GoRouter.of(
+                  context,
+                ).pushReplacement(ClientAppRouter.rHomeScreen);
               }
               if (state is GoogleFailureStates) {
                 SnackBar snackBar = SnackBar(
@@ -59,7 +61,9 @@ class IconTextButtons extends StatelessWidget {
           child: BlocConsumer<FacebookAuthCubit, FacebookAuthState>(
             listener: (context, state) {
               if (state is FacebookAuthSuccessState) {
-                GoRouter.of(context).pushReplacement(ClientAppRouter.rHomeScreen);
+                GoRouter.of(
+                  context,
+                ).pushReplacement(ClientAppRouter.rHomeScreen);
               }
             },
             builder: (context, state) {

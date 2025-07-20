@@ -24,7 +24,6 @@ class LoginViewBody extends StatelessWidget {
             ClientAppRouter.rOtpScreen,
             extra: context.read<PhoneLoginCubit>(),
           );
-
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(

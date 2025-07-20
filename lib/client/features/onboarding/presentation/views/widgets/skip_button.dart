@@ -5,9 +5,7 @@ import 'package:go_car/core/constance.dart';
 import 'package:go_router/go_router.dart';
 
 class SkipButton extends StatelessWidget {
-  const SkipButton({
-    super.key,
-  });
+  const SkipButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,9 @@ class SkipButton extends StatelessWidget {
         },
         child: Text(
           'skip',
-          style: Theme.of(context).textTheme.displayMedium!.copyWith(color: primaryColor),
+          style: Theme.of(
+            context,
+          ).textTheme.displayMedium!.copyWith(color: primaryColor),
         ),
       ),
     );

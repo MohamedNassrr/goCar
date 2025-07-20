@@ -10,6 +10,6 @@ class AppTheme {
     brightness: Brightness.dark,
     primaryColor: const Color(0xff28C76F),
     scaffoldBackgroundColor: const Color(0xff0D0D0D),
-    textTheme:  CustomTextTheme.darkTextTheme,
+    textTheme: CustomTextTheme.darkTextTheme,
   );
 }

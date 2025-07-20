@@ -11,5 +11,5 @@ class GoogleSignOutSuccessStates extends GoogleAuthStates {}
 class GoogleFailureStates extends GoogleAuthStates {
   final String failure;
 
- GoogleFailureStates({required this.failure});
+  GoogleFailureStates({required this.failure});
 }

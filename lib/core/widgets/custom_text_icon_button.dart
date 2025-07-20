@@ -16,7 +16,7 @@ class CustomTextIconButton extends StatelessWidget {
     this.boarderRadius = 12,
     this.height = 45,
     this.width = double.infinity,
-     this.iconSize = 20,
+    this.iconSize = 20,
   });
 
   final String text;
@@ -35,7 +35,7 @@ class CustomTextIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final children = <Widget>[
-      Icon(icon, color: iconColor,size: iconSize,),
+      Icon(icon, color: iconColor, size: iconSize),
       Text(
         text,
         style: Theme.of(context).textTheme.displaySmall!.copyWith(

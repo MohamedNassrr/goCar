@@ -15,13 +15,14 @@ class TrackingUserCubit extends Cubit<TrackingUserState> {
   Set<Marker> markers = {};
   TrackingUserCubit() : super(TrackingUserInitialStates());
 
- 
-
   void trackingUpdated() async {
     try {
       var customMarker = await BitmapDescriptor.asset(
         const ImageConfiguration(),
-         ClientAssetsData.clientLocationMarker,height: 35,width: 27);
+        ClientAssetsData.clientLocationMarker,
+        height: 35,
+        width: 27,
+      );
       _locationSubscription?.cancel();
       emit(TrackingUserLoadingStates());
       _locationSubscription = LocationService().location.onLocationChanged
@@ -34,7 +35,6 @@ class TrackingUserCubit extends Cubit<TrackingUserState> {
               markerId: const MarkerId('userMarker'),
               position: userLocation,
               icon: customMarker,
-              
             );
             markers.add(marker);
             emit(TrackingUserUpdatedStates());

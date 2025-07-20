@@ -10,7 +10,7 @@ class PhoneLoginCubit extends Cubit<PhoneLoginStates> {
   PhoneLoginCubit() : super(PhoneInitialStates());
 
   final _auth = FirebaseAuth.instance;
-   String verificationId = '';
+  String verificationId = '';
 
   void phoneAuth({required String phoneNumber}) {
     emit(PhoneLoadingStates());
@@ -24,36 +24,40 @@ class PhoneLoginCubit extends Cubit<PhoneLoginStates> {
     );
   }
 
-
-  void verificationCompleted (phoneAuthCredential) async {
+  void verificationCompleted(phoneAuthCredential) async {
     emit(PhoneVerifiedStates());
     await _auth.signInWithCredential(phoneAuthCredential);
   }
-  void verificationField (e) {
+
+  void verificationField(e) {
     final failure = FirebaseAuthFailure.fromCode(e.code);
     emit(PhoneFailureStates(failure: failure.message));
     log(failure.message.toString());
   }
-  void codeSent (verificationId, resendToken) async {
+
+  void codeSent(verificationId, resendToken) async {
     debugPrint('code sent');
     this.verificationId = verificationId;
     emit(PhoneCodeSubmittedStates());
   }
-  void codeAutoRetrievalTimeout (String verificationId){}
 
-  Future<void> submitOtp(String otpCode) async{
+  void codeAutoRetrievalTimeout(String verificationId) {}
+
+  Future<void> submitOtp(String otpCode) async {
     emit(PhoneLoadingStates());
-    PhoneAuthCredential credential = PhoneAuthProvider.credential(verificationId: verificationId, smsCode: otpCode);
+    PhoneAuthCredential credential = PhoneAuthProvider.credential(
+      verificationId: verificationId,
+      smsCode: otpCode,
+    );
     try {
       await _auth.signInWithCredential(credential);
       emit(PhoneSuccessStates());
     } catch (e) {
-     if(e is FirebaseAuthException){
-       final failure = FirebaseAuthFailure.fromCode(e.code);
-       emit(PhoneFailureStates(failure: failure.message));
-       log(failure.message.toString());
-     }
+      if (e is FirebaseAuthException) {
+        final failure = FirebaseAuthFailure.fromCode(e.code);
+        emit(PhoneFailureStates(failure: failure.message));
+        log(failure.message.toString());
+      }
     }
   }
-
 }

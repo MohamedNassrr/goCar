@@ -40,31 +40,26 @@ abstract class ClientAppRouter {
               child: const OtpView(),
             ),
       ),
+      GoRoute(path: rHomeScreen, builder: (context, state) => const HomeView()),
+
       GoRoute(
-        path: rHomeScreen,
-        builder: (context, state) => const HomeView(),
-      ),
-    
-        GoRoute(
         path: rDestinationScreen,
         builder: (context, state) => const SelectDestinationView(),
       ),
     ],
   );
-  static String initialScreen(){
+  static String initialScreen() {
     final onboarding = LocalStorage.getData(key: 'onboarding');
     User? user = FirebaseAuth.instance.currentUser;
 
-     if(onboarding != null){
-       if (user != null) {
-         return rHomeScreen;
-       } else {
-         return rLogin;
-       }
-
-     }else{
-       return rOnboarding;
-     }
-
+    if (onboarding != null) {
+      if (user != null) {
+        return rHomeScreen;
+      } else {
+        return rLogin;
+      }
+    } else {
+      return rOnboarding;
+    }
   }
 }
