@@ -23,3 +23,9 @@ final class TrackingUserPermissionFailureStates extends TrackingUserState {
 
   TrackingUserPermissionFailureStates({required this.failure});
 }
+
+final class SelectedLocationStates extends TrackingUserState{
+  final String selectedLocation;
+
+  SelectedLocationStates(this.selectedLocation);
+}

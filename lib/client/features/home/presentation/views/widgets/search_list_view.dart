@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_car/client/features/home/presentation/controller/search_place_cubit/search_cubit.dart';
 import 'package:go_car/client/features/home/presentation/controller/search_place_cubit/search_state.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchListView extends StatelessWidget {
   const SearchListView({super.key});
@@ -17,7 +18,12 @@ class SearchListView extends StatelessWidget {
               physics: const BouncingScrollPhysics(),
               itemBuilder:
                   (context, index) => InkWell(
-                    onTap: () {},
+                    onTap: () {
+                      var placeId = state.places[index].placeId;
+                      GoRouter.of(context).pop({
+                        'placeId':placeId
+                      });
+                    },
                     child: ListTile(
                       leading: Container(
                         width: 36.w,
