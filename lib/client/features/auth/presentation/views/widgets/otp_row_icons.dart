@@ -48,7 +48,7 @@ class OtpRowIcons extends StatelessWidget {
           height: 45,
           iconColor: Colors.white,
           isIconFirst: false,
-          isLoading:  otpCubitState is PhoneLoadingStates ? true : false,
+          isLoading: otpCubitState is PhoneLoadingStates ? true : false,
         ),
       ],
     );

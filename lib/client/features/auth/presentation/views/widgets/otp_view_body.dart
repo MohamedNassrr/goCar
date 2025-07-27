@@ -15,11 +15,10 @@ class OtpViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<PhoneLoginCubit, PhoneLoginStates>(
       listener: (context, state) {
         if (state is PhoneSuccessStates) {
-         GoRouter.of(context).pushReplacement(ClientAppRouter.rHome);
+          GoRouter.of(context).pushReplacement(ClientAppRouter.rHomeScreen);
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(
@@ -66,7 +65,11 @@ class OtpViewBody extends StatelessWidget {
                 },
               ),
               SizedBox(height: MediaQuery.of(context).size.height / 35),
-              OtpRowIcons(otpCubit: otpCubit, otpCode: otpController, otpCubitState: state,),
+              OtpRowIcons(
+                otpCubit: otpCubit,
+                otpCode: otpController,
+                otpCubitState: state,
+              ),
             ],
           ),
         );

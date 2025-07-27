@@ -58,7 +58,7 @@ class DefaultFirebaseOptions {
     storageBucket: 'go-car-bc518.firebasestorage.app',
   );
 
-  static  FirebaseOptions ios = FirebaseOptions(
+  static FirebaseOptions ios = FirebaseOptions(
     apiKey: '${dotenv.env["FIREBASE_IOS_KEY"]}',
     appId: '1:874797873983:ios:cc95b6967483e6c85fb18a',
     messagingSenderId: '874797873983',

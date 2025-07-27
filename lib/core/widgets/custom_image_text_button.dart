@@ -44,24 +44,27 @@ class CustomImageTextButton extends StatelessWidget {
           color: primaryColor,
           borderRadius: BorderRadius.circular(boarderRadius),
         ),
-        child: isLoading ? const CustomCircleIndicator(): Row(
-          spacing: spacing,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image(
-              image: AssetImage(image),
-              width: imageWidth.w,
-              height: imageHeight.h,
-            ),
-            Text(
-              buttonText,
-              style: Theme.of(context).textTheme.displaySmall!.copyWith(
-                color: textColor,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
+        child:
+            isLoading
+                ? const CustomCircleIndicator()
+                : Row(
+                  spacing: spacing,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image(
+                      image: AssetImage(image),
+                      width: imageWidth.w,
+                      height: imageHeight.h,
+                    ),
+                    Text(
+                      buttonText,
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                        color: textColor,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ],
+                ),
       ),
     );
   }

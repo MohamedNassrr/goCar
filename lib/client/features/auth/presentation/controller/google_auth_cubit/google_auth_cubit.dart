@@ -19,9 +19,9 @@ class GoogleAuthCubit extends Cubit<GoogleAuthStates> {
       emit(GoogleFailureStates(failure: e.toString()));
       log(e.toString());
       if (e is GoogleSignInFailure) {
-         GoogleSignInFailure.fromCode(e.toString());
+        GoogleSignInFailure.fromCode(e.toString());
       }
-       GoogleSignInFailure(e.toString());
+      GoogleSignInFailure(e.toString());
     }
   }
 

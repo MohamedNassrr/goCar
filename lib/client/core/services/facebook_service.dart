@@ -14,7 +14,8 @@ class FacebookAuthService {
     );
 
     final UserCredential userCredential = await _auth.signInWithCredential(
-        credential);
+      credential,
+    );
 
     return userCredential.user;
   }

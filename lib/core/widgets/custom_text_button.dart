@@ -34,19 +34,22 @@ class CustomTextButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: onPressed,
-        child: isLoading ? const SizedBox(
-                  height:30,
+        child:
+            isLoading
+                ? const SizedBox(
+                  height: 30,
                   width: 30,
                   child: Center(
                     child: CircularProgressIndicator(color: Colors.white),
                   ),
-                ) : Text(
-          buttonText.toUpperCase(),
-          style: Theme.of(context).textTheme.displaySmall!.copyWith(
-            color: textColor,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+                )
+                : Text(
+                  buttonText.toUpperCase(),
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(
+                    color: textColor,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
       ),
     );
   }
