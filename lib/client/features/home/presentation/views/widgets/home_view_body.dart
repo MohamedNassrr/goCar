@@ -6,6 +6,7 @@ import 'package:go_car/client/features/home/presentation/controller/routing_cubi
 import 'package:go_car/client/features/home/presentation/controller/tracking_user_cubit/tracking_user_cubit.dart';
 import 'package:go_car/client/features/home/presentation/controller/tracking_user_cubit/tracking_user_state.dart';
 import 'package:go_car/client/features/home/presentation/views/widgets/custom_maps_bottom_sheet.dart';
+import 'package:go_car/client/features/home/presentation/views/widgets/selectCarBottomSheet.dart';
 import 'package:go_car/core/services/location_service.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -20,6 +21,7 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   Set<Polyline> polylines = {};
   late GoogleMapController googleMapController;
+  Map<String, dynamic>? result;
 
   @override
   Widget build(BuildContext context) {
@@ -43,31 +45,36 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ),
             BlocBuilder<RoutingCubit, RoutingState>(
               builder: (context, state) {
-                var routingCubit = context.read<RoutingCubit>();
-                return CustomMapsBottomSheet(
-                  onSelect: () async {
-                    final locationData = await LocationService().getLocation();
-                    final result = await GoRouter.of(
-                      context,
-                    ).push<Map<String, dynamic>>(
-                      ClientAppRouter.rDestinationScreen,
-                    );
-                    if (result != null && result['placeId'] != null) {
-                      mapsCubit.selectedLocation(
-                        selectedLocation: result['placeId'],
+                if (result != null) {
+                  return const SelectCarBottomSheet();
+                } else {
+                  var routingCubit = context.read<RoutingCubit>();
+                  return CustomMapsBottomSheet(
+                    onSelect: () async {
+                      final locationData =
+                          await LocationService().getLocation();
+                      result = await GoRouter.of(
+                        context,
+                      ).push<Map<String, dynamic>>(
+                        ClientAppRouter.rDestinationScreen,
                       );
-                    }
-                    var point = await routingCubit.getRoutes(
-                      locationData,
-                      result,
-                    );
-                    routingCubit.displayRoutes(
-                      point,
-                      polylines,
-                      googleMapController,
-                    );
-                  },
-                );
+                      if (result != null && result!['placeId'] != null) {
+                        mapsCubit.selectedLocation(
+                          selectedLocation: result!['placeId'],
+                        );
+                      }
+                      var point = await routingCubit.getRoutes(
+                        locationData,
+                        result,
+                      );
+                      routingCubit.displayRoutes(
+                        point,
+                        polylines,
+                        googleMapController,
+                      );
+                    },
+                  );
+                }
               },
             ),
           ],
