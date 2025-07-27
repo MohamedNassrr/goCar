@@ -2,6 +2,8 @@ sealed class GeoCodingState {}
 
 final class GeoCodingInitialStates extends GeoCodingState {}
 
+final class GeoCodingLoadingStates extends GeoCodingState {}
+
 final class GeoCodingConvertedStates extends GeoCodingState {
   final String address;
 

@@ -48,33 +48,37 @@ class _SelectDestinationBodyState extends State<SelectDestinationBody> {
         builder: (context, state) {
           if (state is GeoCodingConvertedStates) {
             userLocationController.text = state.address;
+            return Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                spacing: 16,
+                children: [
+                  CustomTextField(
+                    controller: userLocationController,
+                    iconColor: Colors.blue,
+                    prefixIcon: Icons.circle,
+                  ),
+                  CustomTextField(
+                    controller: selectLocationController,
+                    iconColor: Colors.orange,
+                    prefixIcon: Icons.circle,
+                    hintText: 'Where to?',
+                    onChanged: (_) {
+                      context.read<SearchCubit>().fetchPrediction(
+                        input: selectLocationController.text,
+                        sessionToken: uuid.v4(),
+                      );
+                    },
+                  ),
+                  const SearchListView(),
+                ],
+              ),
+            );
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(color: Colors.black),
+            );
           }
-          return Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              spacing: 16,
-              children: [
-                CustomTextField(
-                  controller: userLocationController,
-                  iconColor: Colors.blue,
-                  prefixIcon: Icons.circle,
-                ),
-                CustomTextField(
-                  controller: selectLocationController,
-                  iconColor: Colors.orange,
-                  prefixIcon: Icons.circle,
-                  hintText: 'Where to?',
-                  onChanged: (_) {
-                    context.read<SearchCubit>().fetchPrediction(
-                      input: selectLocationController.text,
-                      sessionToken: uuid.v4(),
-                    );
-                  },
-                ),
-                const SearchListView(),
-              ],
-            ),
-          );
         },
       ),
     );

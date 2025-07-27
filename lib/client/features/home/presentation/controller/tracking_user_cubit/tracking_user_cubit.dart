@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:go_car/client/core/widgets/custom_gps_marker.dart';
 import 'package:go_car/client/features/home/presentation/controller/tracking_user_cubit/tracking_user_state.dart';
 import 'package:go_car/core/services/location_service.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,14 +10,13 @@ import 'package:location/location.dart';
 
 class TrackingUserCubit extends Cubit<TrackingUserState> {
   StreamSubscription<LocationData>? _locationSubscription;
-  late GoogleMapController googleMapController;
   Set<Marker> markers = {};
-
   TrackingUserCubit() : super(TrackingUserInitialStates());
 
-  void trackingUpdated() async {
+  void trackingUpdated(GoogleMapController googleMapController) async {
+   var customMarker =  await MarkerGenerator.createGoogleMapsUserDot();
+    emit(TrackingUserLoadingStates());
     try {
-
       _locationSubscription?.cancel();
       emit(TrackingUserLoadingStates());
       _locationSubscription = LocationService().location.onLocationChanged
@@ -29,7 +29,7 @@ class TrackingUserCubit extends Cubit<TrackingUserState> {
               markerId: const MarkerId('userMarker'),
               position: userLocation,
 
-              icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+              icon:  customMarker,
             );
             markers.add(marker);
             emit(TrackingUserUpdatedStates());

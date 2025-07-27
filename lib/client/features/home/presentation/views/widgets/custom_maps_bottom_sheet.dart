@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomMapsBottomSheet extends StatelessWidget {
   const CustomMapsBottomSheet({super.key, required this.onSelect});
+
   final VoidCallback onSelect;
+
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -31,7 +33,7 @@ class CustomMapsBottomSheet extends StatelessWidget {
               style: ButtonStyle(
                 overlayColor: WidgetStateProperty.all(Colors.grey[300]),
               ),
-              onPressed:onSelect,
+              onPressed: onSelect,
               child: Text(
                 'Where to?',
                 style: Theme.of(context).textTheme.bodySmall,

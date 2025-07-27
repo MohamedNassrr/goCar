@@ -10,6 +10,7 @@ class GeoCodingCubit extends Cubit<GeoCodingState> {
   final geoCodingService = GeoCodingService();
 
   Future<void> convertToString() async {
+    emit(GeoCodingLoadingStates());
     try {
       var locationData = await LocationService().getLocation();
       final address = await geoCodingService.getLocation(
