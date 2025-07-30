@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/core/services/facebook_service.dart';
-import 'package:go_car/client/core/services/google_auth_service.dart';
-import 'package:go_car/client/core/services/service_locator.dart';
+import 'package:go_car/core/services/facebook_service.dart';
+import 'package:go_car/core/services/google_auth_service.dart';
+import 'package:go_car/core/services/service_locator.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/core/utils/client_assets_data.dart';
-import 'package:go_car/client/features/auth/presentation/controller/facebook_cubit/facebook_auth_states.dart';
-import 'package:go_car/client/features/auth/presentation/controller/facebook_cubit/facebook_cubit.dart';
-import 'package:go_car/client/features/auth/presentation/controller/google_auth_cubit/google_auth_cubit.dart';
-import 'package:go_car/client/features/auth/presentation/controller/google_auth_cubit/google_auth_states.dart';
+import 'package:go_car/core/features/auth/presentation/controller/facebook_cubit/facebook_auth_states.dart';
+import 'package:go_car/core/features/auth/presentation/controller/facebook_cubit/facebook_cubit.dart';
+import 'package:go_car/core/features/auth/presentation/controller/google_auth_cubit/google_auth_cubit.dart';
+import 'package:go_car/core/features/auth/presentation/controller/google_auth_cubit/google_auth_states.dart';
 import 'package:go_car/core/widgets/custom_image_text_button.dart';
 import 'package:go_router/go_router.dart';
 

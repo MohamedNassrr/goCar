@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/core/services/facebook_service.dart';
-import 'package:go_car/client/features/auth/presentation/controller/facebook_cubit/facebook_auth_states.dart';
+import 'package:go_car/core/services/facebook_service.dart';
+import 'package:go_car/core/features/auth/presentation/controller/facebook_cubit/facebook_auth_states.dart';
 
 class FacebookAuthCubit extends Cubit<FacebookAuthState> {
   FacebookAuthCubit(this._facebookAuthService)

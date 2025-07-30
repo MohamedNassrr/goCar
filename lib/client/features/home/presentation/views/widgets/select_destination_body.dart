@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/core/services/service_locator.dart';
+import 'package:go_car/core/services/service_locator.dart';
 import 'package:go_car/client/core/widgets/custom_text_field.dart';
 import 'package:go_car/client/features/home/data/repos/place_repos/place_repo_impl.dart';
 import 'package:go_car/client/features/home/presentation/controller/geo_coding_cubit/geo_coding_cubit.dart';

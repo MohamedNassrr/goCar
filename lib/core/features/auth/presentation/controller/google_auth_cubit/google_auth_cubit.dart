@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:go_car/client/core/failures/client_failures.dart';
-import 'package:go_car/client/core/services/google_auth_service.dart';
-import 'package:go_car/client/features/auth/presentation/controller/google_auth_cubit/google_auth_states.dart';
+import 'package:go_car/core/services/google_auth_service.dart';
+import 'package:go_car/core/features/auth/presentation/controller/google_auth_cubit/google_auth_states.dart';
 
 class GoogleAuthCubit extends Cubit<GoogleAuthStates> {
   GoogleAuthCubit(this._googleAuthService) : super(GoogleInitialStates());

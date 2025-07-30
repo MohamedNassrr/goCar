@@ -2,8 +2,8 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:go_car/client/core/widgets/custom_gps_marker.dart';
-import 'package:go_car/client/features/home/presentation/controller/tracking_user_cubit/tracking_user_state.dart';
+import 'package:go_car/core/widgets/custom_gps_marker.dart';
+import 'package:go_car/core/controllers/tracking_user_cubit/tracking_user_state.dart';
 import 'package:go_car/core/services/location_service.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';

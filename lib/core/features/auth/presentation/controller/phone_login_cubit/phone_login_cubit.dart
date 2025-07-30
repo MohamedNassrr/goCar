@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
 import 'package:go_car/core/failures/firebase_auth_failure.dart';
 
 class PhoneLoginCubit extends Cubit<PhoneLoginStates> {

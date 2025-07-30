@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/core/utils/client_app_router.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
-import 'package:go_car/client/features/auth/presentation/views/widgets/otp_row_icons.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
+import 'package:go_car/core/features/auth/presentation/views/widgets/otp_row_icons.dart';
 import 'package:go_car/core/constance.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class OtpViewBody extends StatelessWidget {
-  OtpViewBody({super.key});
+  OtpViewBody({super.key, required this.successRouting});
 
   final TextEditingController otpController = TextEditingController();
+
+  final String successRouting;
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<PhoneLoginCubit, PhoneLoginStates>(
       listener: (context, state) {
         if (state is PhoneSuccessStates) {
-          GoRouter.of(context).pushReplacement(ClientAppRouter.rHomeScreen);
+          GoRouter.of(context).go(successRouting);
         }
         if (state is PhoneFailureStates) {
           SnackBar snackBar = SnackBar(

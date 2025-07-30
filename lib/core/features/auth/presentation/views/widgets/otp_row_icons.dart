@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_states.dart';
 import 'package:go_car/core/constance.dart';
 import 'package:go_car/core/widgets/custom_text_icon_button.dart';
 import 'package:go_router/go_router.dart';

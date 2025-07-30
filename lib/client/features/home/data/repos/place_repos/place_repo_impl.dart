@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:go_car/client/core/services/places_service.dart';
+import 'package:go_car/core/services/places_service.dart';
 import 'package:go_car/client/features/home/data/models/places_model/places_model.dart';
 import 'package:go_car/client/features/home/data/repos/place_repos/place_repo.dart';
 import 'package:go_car/core/failures/api_failures.dart';

@@ -34,6 +34,26 @@ android {
         versionName = flutter.versionName
     }
 
+
+    flavorDimensions += "default"
+    productFlavors {
+        create("rider") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "goCar")
+        }
+        create("driver") {
+            dimension = "default"
+            applicationIdSuffix = ".driver"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "goCar driver")
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.

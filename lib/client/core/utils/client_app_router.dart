@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_car/client/core/services/local_storage.dart';
-import 'package:go_car/client/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
-import 'package:go_car/client/features/auth/presentation/views/login_view.dart';
-import 'package:go_car/client/features/auth/presentation/views/otp_view.dart';
+import 'package:go_car/core/services/local_storage.dart';
+import 'package:go_car/core/features/auth/presentation/controller/phone_login_cubit/phone_login_cubit.dart';
+import 'package:go_car/core/features/auth/presentation/views/login_view.dart';
+import 'package:go_car/core/features/auth/presentation/views/otp_view.dart';
 import 'package:go_car/client/features/home/presentation/views/home_view.dart';
 import 'package:go_car/client/features/home/presentation/views/select_destination_view.dart';
 import 'package:go_car/client/features/onboarding/presentation/views/onboarding_view.dart';
@@ -37,7 +37,7 @@ abstract class ClientAppRouter {
         builder:
             (context, state) => BlocProvider.value(
               value: state.extra as PhoneLoginCubit,
-              child: const OtpView(),
+              child: const OtpView(successRouting: rHomeScreen,),
             ),
       ),
       GoRoute(path: rHomeScreen, builder: (context, state) => const HomeView()),
