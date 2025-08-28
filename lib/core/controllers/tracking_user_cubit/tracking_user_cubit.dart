@@ -2,6 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:go_car/core/widgets/custom_gps_marker.dart';
 import 'package:go_car/core/controllers/tracking_user_cubit/tracking_user_state.dart';
 import 'package:go_car/core/services/location_service.dart';
@@ -10,36 +13,69 @@ import 'package:location/location.dart';
 
 class TrackingUserCubit extends Cubit<TrackingUserState> {
   StreamSubscription<LocationData>? _locationSubscription;
+  DateTime lastSent = DateTime.now();
   Set<Marker> markers = {};
-  TrackingUserCubit() : super(TrackingUserInitialStates());
+  final String role;
+  final userId = FirebaseAuth.instance.currentUser!.uid;
+
+  TrackingUserCubit(this.role) : super(TrackingUserInitialStates());
+
+  final database = FirebaseDatabase.instanceFor(
+    app: Firebase.app(),
+    databaseURL: 'https://go-car-bc518-default-rtdb.firebaseio.com',
+  );
 
   void trackingUpdated(GoogleMapController googleMapController) async {
-   var customMarker =  await MarkerGenerator.createGoogleMapsUserDot();
+    var customMarker = await MarkerGenerator.createGoogleMapsUserDot();
     emit(TrackingUserLoadingStates());
     try {
       _locationSubscription?.cancel();
       emit(TrackingUserLoadingStates());
       _locationSubscription = LocationService().location.onLocationChanged
           .listen((locationData) {
-            final userLocation = LatLng(
-              locationData.latitude!,
-              locationData.longitude!,
-            );
-            var marker = Marker(
-              markerId: const MarkerId('userMarker'),
-              position: userLocation,
+            log('lat ${locationData.latitude} , long: ${locationData.longitude}');
+            final now = DateTime.now();
+            if (now.difference(lastSent) >= const Duration(seconds: 5)) {
+              lastSent = now;
+              final userLocation = LatLng(
+                locationData.latitude!,
+                locationData.longitude!,
+              );
+              final path = role == 'rider' ? 'rider' : 'driver';
+              if (path == 'rider') {
+                database.ref().child(path).set({
+                  'latLng': {
+                    'latitude': userLocation.latitude,
+                    'longitude': userLocation.longitude,
+                  },
+                  'timestamp': now.millisecondsSinceEpoch,
+                  'userId': userId,
+                });
+              } else if (path == 'driver') {
+                database.ref().child(path).update({
+                  'latLng': {
+                    'latitude': userLocation.latitude,
+                    'longitude': userLocation.longitude,
+                  },
+                  'timestamp': now.millisecondsSinceEpoch,
+                  'userId': userId,
+                });
+              }
+              var marker = Marker(
+                markerId: const MarkerId('userMarker'),
+                position: userLocation,
 
-              icon:  customMarker,
-            );
-            markers.add(marker);
-            emit(TrackingUserUpdatedStates());
-            googleMapController.animateCamera(
-              CameraUpdate.newCameraPosition(
-                CameraPosition(target: userLocation, zoom: 17),
-              ),
-            );
+                icon: customMarker,
+              );
+              markers.add(marker);
+              googleMapController.animateCamera(
+                CameraUpdate.newCameraPosition(
+                  CameraPosition(target: userLocation, zoom: 17),
+                ),
+              );
+              emit(TrackingUserUpdatedStates());
+            }
           });
-      emit(TrackingUserUpdatedStates());
     } on LocationServiceException catch (e) {
       emit(TrackingUserServerFailureStates(failure: e.toString()));
       log('error in server: ${e.toString()}');

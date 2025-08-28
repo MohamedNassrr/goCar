@@ -10,7 +10,7 @@ class DriverHomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: BlocProvider(
-        create: (context) => TrackingUserCubit(),
+        create: (context) => TrackingUserCubit('driver'),
         child: const SafeArea(child: DriverHomeViewBody()),
       ),
     );

@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_car/client/core/utils/client_app_router.dart';
 import 'package:go_car/client/features/home/presentation/controller/routing_cubit/routing_cubit.dart';
 import 'package:go_car/client/features/home/presentation/controller/routing_cubit/routing_state.dart';
+import 'package:go_car/client/features/home/presentation/views/widgets/custom_maps_bottom_sheet.dart';
+import 'package:go_car/client/features/home/presentation/views/widgets/select_car_bottom_sheet.dart';
 import 'package:go_car/core/controllers/tracking_user_cubit/tracking_user_cubit.dart';
 import 'package:go_car/core/controllers/tracking_user_cubit/tracking_user_state.dart';
-import 'package:go_car/client/features/home/presentation/views/widgets/custom_maps_bottom_sheet.dart';
-import 'package:go_car/client/features/home/presentation/views/widgets/selectCarBottomSheet.dart';
 import 'package:go_car/core/services/location_service.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -23,6 +23,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   late GoogleMapController googleMapController;
   Map<String, dynamic>? result;
 
+
+
   @override
   Widget build(BuildContext context) {
     var mapsCubit = context.read<TrackingUserCubit>();
@@ -32,11 +34,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           children: [
             GoogleMap(
               polylines: polylines,
+              myLocationButtonEnabled: false,
               zoomControlsEnabled: false,
               initialCameraPosition: const CameraPosition(
                 target: LatLng(30.064921, 31.367242),
                 zoom: 5.6,
-              ),
+              ),          
               markers: mapsCubit.markers,
               onMapCreated: (controller) {
                 googleMapController = controller;

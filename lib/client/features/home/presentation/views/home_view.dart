@@ -14,7 +14,7 @@ class HomeView extends StatelessWidget {
       body: MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => RoutingCubit()),
-          BlocProvider(create: (context) => TrackingUserCubit()),
+          BlocProvider(create: (context) => TrackingUserCubit('rider')),
         ],
         child: const HomeViewBody(),
       ),

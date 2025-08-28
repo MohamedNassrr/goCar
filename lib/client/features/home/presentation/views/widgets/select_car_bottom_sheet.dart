@@ -6,7 +6,6 @@ import 'package:go_car/client/core/widgets/custom_select_car_type.dart';
 class SelectCarBottomSheet extends StatelessWidget {
   const SelectCarBottomSheet({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Positioned(
@@ -24,8 +23,12 @@ class SelectCarBottomSheet extends StatelessWidget {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-
+            IconButton(
+              onPressed: () {},
+               icon: const Icon(Icons.close)
+               ),
             Flexible(
               child: CustomSelectCarType(
                 onPressed: () {},
