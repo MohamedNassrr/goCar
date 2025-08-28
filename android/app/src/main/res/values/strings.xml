@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Go Car</string>
+    <string name="facebook_app_id">777011948305749</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">f835e6e75544a0af8e5892a4a3e66340</string>
+</resources>

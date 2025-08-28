@@ -1,0 +1,22 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "goCar",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_rider.dart",
+            "args": ["--flavor", "rider"]
+        },
+        {
+            "name": "goCar driver",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_driver.dart",
+            "args": ["--flavor", "driver"]
+        }
+    ]
+}
