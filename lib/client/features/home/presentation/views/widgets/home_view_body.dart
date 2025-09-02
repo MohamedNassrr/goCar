@@ -23,8 +23,6 @@ class _HomeViewBodyState extends State<HomeViewBody> {
   late GoogleMapController googleMapController;
   Map<String, dynamic>? result;
 
-
-
   @override
   Widget build(BuildContext context) {
     var mapsCubit = context.read<TrackingUserCubit>();
@@ -39,7 +37,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               initialCameraPosition: const CameraPosition(
                 target: LatLng(30.064921, 31.367242),
                 zoom: 5.6,
-              ),          
+              ),
               markers: mapsCubit.markers,
               onMapCreated: (controller) {
                 googleMapController = controller;
@@ -56,11 +54,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
                     onSelect: () async {
                       final locationData =
                           await LocationService().getLocation();
-                      result = await GoRouter.of(
-                        context,
-                      ).push<Map<String, dynamic>>(
-                        ClientAppRouter.rDestinationScreen,
-                      );
+                     
+                        result = await GoRouter.of(
+                          context,
+                        ).push<Map<String, dynamic>>(
+                          ClientAppRouter.rDestinationScreen,
+                        );
+                     
+
                       if (result != null && result!['placeId'] != null) {
                         mapsCubit.selectedLocation(
                           selectedLocation: result!['placeId'],

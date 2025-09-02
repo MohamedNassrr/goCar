@@ -16,6 +16,7 @@ abstract class ClientAppRouter {
   static const rEmailScreen = '/EmailView';
   static const rHomeScreen = '/HomeView';
   static const rDestinationScreen = '/SelectDestinationView';
+  static const rTripRequestScreen = '/TripRequestView';
 
   static final router = GoRouter(
     initialLocation: initialScreen(),
@@ -37,15 +38,15 @@ abstract class ClientAppRouter {
         builder:
             (context, state) => BlocProvider.value(
               value: state.extra as PhoneLoginCubit,
-              child: const OtpView(successRouting: rHomeScreen,),
+              child: const OtpView(successRouting: rHomeScreen),
             ),
       ),
-      GoRoute(path: rHomeScreen, builder: (context, state) => const HomeView()),
-
+      GoRoute(path: rHomeScreen, builder: (context, state) =>  const HomeView()),
       GoRoute(
         path: rDestinationScreen,
         builder: (context, state) => const SelectDestinationView(),
       ),
+   
     ],
   );
   static String initialScreen() {

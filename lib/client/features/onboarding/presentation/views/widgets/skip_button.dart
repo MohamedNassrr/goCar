@@ -17,7 +17,9 @@ class SkipButton extends StatelessWidget {
         ),
         onPressed: () async {
           await LocalStorage.setData(key: 'onboarding', value: true);
-          GoRouter.of(context).pushReplacement(ClientAppRouter.rLogin);
+          if (context.mounted) {
+            GoRouter.of(context).pushReplacement(ClientAppRouter.rLogin);
+          }
         },
         child: Text(
           'skip',

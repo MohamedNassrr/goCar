@@ -33,7 +33,6 @@ class TrackingUserCubit extends Cubit<TrackingUserState> {
       emit(TrackingUserLoadingStates());
       _locationSubscription = LocationService().location.onLocationChanged
           .listen((locationData) {
-            log('lat ${locationData.latitude} , long: ${locationData.longitude}');
             final now = DateTime.now();
             if (now.difference(lastSent) >= const Duration(seconds: 5)) {
               lastSent = now;
